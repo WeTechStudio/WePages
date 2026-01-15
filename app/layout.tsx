@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Geom } from "next/font/google";
 import "./globals.css";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,7 @@ const geom = Geom({
 });
 
 export const metadata: Metadata = {
-  title: "WeTech - Landing Pages que Venden",
+  title: "WePages - Landing Pages que Venden",
   description: "Landing pages rápidas, limpias y medibles para tu negocio.",
 };
 
@@ -34,7 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${geom.variable} font-sans antialiased`}
       >
-        {children}
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   );

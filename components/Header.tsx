@@ -27,7 +27,7 @@ const Header = () => {
               className="h-7 w-auto"
             />
             <a href="#" className="text-xl font-bold tracking-tight">
-            WeTech
+            WePages
             </a>
           </a>
 

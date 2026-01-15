@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="font-bold text-lg mb-4">WeTech</div>
+            <div className="font-bold text-lg mb-4">WePages</div>
             <p className="text-sm text-muted-foreground">
               Landing pages que venden, rápidas y medibles.
             </p>
@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
         <div className="pt-8 border-t flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} WeTech. Todos los derechos reservados.
+            © {currentYear} WePages. Todos los derechos reservados.
           </p>
           <div className="flex gap-4">
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Twitter">
