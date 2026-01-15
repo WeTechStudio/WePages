@@ -52,44 +52,44 @@ const plans = [
 
 const PricingSection = () => {
   return (
-    <section id="precios" className="py-16 md:py-24">
+    <section id="precios" className="py-24 md:py-36">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
           Precios claros
         </h2>
-        <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+        <p className="text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
           Sin costos ocultos. El precio incluye todo lo necesario para lanzar.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative rounded-xl border p-6 shadow-sm ${
+              className={`relative rounded-2xl border p-8 shadow-sm ${
                 plan.popular ? 'border-primary bg-primary/5' : 'bg-background'
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground">
                   Más popular
                 </div>
               )}
-              <h3 className="text-lg font-semibold">{plan.name}</h3>
-              <div className="mt-2 mb-2">
-                <span className="text-4xl font-bold">{plan.price}</span>
+              <h3 className="text-xl font-semibold">{plan.name}</h3>
+              <div className="mt-3 mb-4">
+                <span className="text-5xl font-bold">{plan.price}</span>
               </div>
-              <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
-              <ul className="space-y-3 mb-8">
+              <p className="text-base text-muted-foreground mb-8">{plan.description}</p>
+              <ul className="space-y-4 mb-8">
                 {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-2 text-sm">
-                    <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={1.5} />
+                  <li key={featureIndex} className="flex items-start gap-3 text-base">
+                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" strokeWidth={1.5} />
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
               <a
                 href="#contacto"
-                className={`inline-flex items-center justify-center w-full rounded-md h-10 px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${
+                className={`inline-flex items-center justify-center w-full rounded-md h-12 px-6 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${
                   plan.popular
                     ? 'bg-primary text-primary-foreground hover:bg-primary/90'
                     : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
