@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { HighlightWord } from "@/components/ui/HighlightWord";
 
 const CAROUSEL_ITEMS = [
   { label: "SaaS B2B", metric: "+45% leads" },
@@ -136,13 +137,13 @@ const HeroSection = () => {
         />
       )}
 
-      <div className="container mx-auto max-w-6xl relative z-10 flex-1 flex flex-col justify-center">
+      <div className="mt-24 container mx-auto max-w-6xl relative z-10 flex-1 flex flex-col justify-center">
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.05]">
             Convierte visitas en ventas
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto">
-            WePages entrega una landing optimizada para conversión en menos de 7 días. Setup, deploy y opciones de pago locales incluidas.
+            Landing pages optimizadas para maximizar la conversión de tus <HighlightWord variant="hw1">visitantes</HighlightWord> en <HighlightWord variant="hw2">clientes</HighlightWord>.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-10">

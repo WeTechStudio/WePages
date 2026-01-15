@@ -4,12 +4,12 @@ const features = [
   {
     icon: BarChart3,
     title: 'Medible',
-    description: 'Analytics integrados desde el día uno. Sin configuraciones extra.',
+    description: 'Medimos visitas, clics y conversiones desde el primer día.',
   },
   {
     icon: Zap,
     title: 'Rápida',
-    description: 'Carga en menos de 2 segundos. Optimizada para Core Web Vitals.',
+    description: 'Carga rápida. Optimizada para Core Web Vitals.',
   },
   {
     icon: Globe,
@@ -19,7 +19,7 @@ const features = [
   {
     icon: CheckCircle,
     title: 'Mantenimiento',
-    description: 'Soporte técnico incluido por 30 días. Después, plans opcionales.',
+    description: 'Soporte técnico incluido por 30 días. Después, planes opcionales.',
   },
 ];
 

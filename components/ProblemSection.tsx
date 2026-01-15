@@ -1,4 +1,5 @@
 import { AlertCircle, Globe2, MessageCircle } from 'lucide-react';
+import { HighlightWord } from '@/components/ui/HighlightWord';
 
 const ProblemSection = () => {
   return (
@@ -10,7 +11,8 @@ const ProblemSection = () => {
               El problema con las landing pages actuales
             </h2>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              La mayoría de las páginas web corporativas son lentas, confusas y no generan resultados. Tu cliente potencial abandona antes de entender tu propuesta de valor.
+              La mayoría de las páginas web corporativas no están diseñadas para <HighlightWord variant="hw1">convertir</HighlightWord>.
+              El resultado: visitas que se pierden, mensajes que no venden y decisiones tomadas a ciegas.
             </p>
             
             <div className="space-y-8">
