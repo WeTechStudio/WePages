@@ -1,4 +1,7 @@
-import Image from 'next/image';
+"use client";
+
+import { useEffect, useRef } from "react";
+import Typed from "typed.js";
 
 const cases = [
   {
@@ -19,11 +22,30 @@ const cases = [
 ];
 
 const CasesSection = () => {
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!typedRef.current) return;
+
+    const typed = new Typed(typedRef.current, {
+      strings: ["Casos de éxito", "Resultados que hablan", "Empresas que transformaron su presencia digital"],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      startDelay: 500,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+    });
+
+    return () => typed.destroy();
+  }, []);
+
   return (
     <section id="casos" className="py-24 md:py-36 bg-muted/30">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
-          Casos de éxito
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">
+          <span ref={typedRef} />
         </h2>
         <p className="text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
           Resultados reales para empresas que apostaron por landing pages optimizadas.

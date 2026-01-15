@@ -1,4 +1,8 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { BarChart3, Zap, Globe, CheckCircle } from 'lucide-react';
+import Typed from "typed.js";
 
 const features = [
   {
@@ -18,17 +22,36 @@ const features = [
   },
   {
     icon: CheckCircle,
-    title: 'Mantenimiento',
-    description: 'Soporte técnico incluido por 30 días. Después, planes opcionales.',
+    title: 'Evolución continua',
+    description: 'Tu landing queda lista para optimizar, escalar y crecer según resultados.',
   },
 ];
 
 const FeaturesSection = () => {
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!typedRef.current) return;
+
+    const typed = new Typed(typedRef.current, {
+      strings: ["Características incluidas", "Lo que incluye tu landing", "Todo para maximizar conversiones"],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      startDelay: 500,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+    });
+
+    return () => typed.destroy();
+  }, []);
+
   return (
     <section id="servicios" className="py-24 md:py-36">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
-          Características incluidas
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">
+          <span ref={typedRef} />
         </h2>
         <p className="text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
           Todo lo que necesitas para una landing page de alto rendimiento, sin complicaciones.

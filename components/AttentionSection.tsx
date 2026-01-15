@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Clock, Eye, ArrowDown } from "lucide-react";
+import Typed from "typed.js";
 
 const STATS = [
   {
@@ -26,6 +28,25 @@ const STATS = [
 ];
 
 const AttentionSection = () => {
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!typedRef.current) return;
+
+    const typed = new Typed(typedRef.current, {
+      strings: ["Tienes 20 segundos.", "Tu cliente decide en menos.", "La atención es tu recurso más escaso."],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      startDelay: 500,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+    });
+
+    return () => typed.destroy();
+  }, []);
+
   return (
     <section className="py-28 md:py-40 bg-zinc-950 text-white">
       <div className="container mx-auto px-4 md:px-8 max-w-5xl">
@@ -39,9 +60,8 @@ const AttentionSection = () => {
           <span className="text-base font-medium text-zinc-400 uppercase tracking-wider mb-6 block">
             La realidad del attention economy
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Tienes 20 segundos.<br />
-            <span className="text-zinc-400">Tu cliente decide en menos.</span>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <span ref={typedRef} />
           </h2>
         </motion.div>
 
@@ -110,10 +130,20 @@ const AttentionSection = () => {
                 La claridad gana. La velocidad vende.
               </p>
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+            </div>
+          </motion.div>
+
+          <motion.p
+            className="text-center text-2xl md:text-3xl font-medium text-zinc-300 mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            WePages está diseñado específicamente para ganar en esos primeros 20 segundos.
+          </motion.p>
+        </div>
+      </section>
   );
 };
 
