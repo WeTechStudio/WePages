@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const CAROUSEL_ITEMS = [
   { label: "SaaS B2B", metric: "+45% leads" },
@@ -12,6 +14,7 @@ const CAROUSEL_ITEMS = [
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [init, setInit] = useState(false);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % CAROUSEL_ITEMS.length);
@@ -22,15 +25,118 @@ const HeroSection = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 4000);
-    return () => clearInterval(interval);
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
+  const particlesOptions = useMemo(
+    () => ({
+      background: {
+        color: {
+          value: "transparent",
+        },
+      },
+      fullScreen: {
+        enable: false,
+        zIndex: -1,
+      },
+      fpsLimit: 120,
+      interactivity: {
+        events: {
+          onClick: {
+            enable: false,
+          },
+          onHover: {
+            enable: true,
+            mode: "grab",
+          },
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            links: {
+              opacity: 0.6,
+            },
+          },
+        },
+      },
+      particles: {
+        color: {
+          value: ["#525252", "#737373", "#a3a3a3", "#d4d4d4"],
+        },
+        links: {
+          color: "#a3a3a3",
+          distance: 120,
+          enable: true,
+          opacity: 0.4,
+          width: 1,
+        },
+        move: {
+          direction: "outside" as const,
+          enable: true,
+          outModes: {
+            default: "out" as const,
+          },
+          random: true,
+          speed: 1.5,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+            area: 600,
+          },
+          value: 80,
+        },
+        opacity: {
+          value: { min: 0.3, max: 0.8 },
+          animation: {
+            enable: true,
+            speed: 0.8,
+            minimumValue: 0.3,
+            sync: false,
+          },
+        },
+        shape: {
+          type: "circle",
+        },
+        size: {
+          value: { min: 2, max: 5 },
+          animation: {
+            enable: true,
+            speed: 1,
+            minimumValue: 2,
+            sync: false,
+          },
+        },
+      },
+      detectRetina: true,
+    }),
+    []
+  );
+
   return (
-    <section className="relative pt-24 md:pt-36 pb-16 px-4 md:px-8 overflow-hidden">
-      <div className="container mx-auto max-w-6xl">
+    <section className="relative min-h-screen flex flex-col pt-24 md:pt-36 pb-16 px-4 md:px-8 overflow-hidden">
+      {init && (
+        <Particles
+          id="tsparticles-hero"
+          options={particlesOptions}
+          className="absolute inset-0 pointer-events-auto"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 0,
+          }}
+        />
+      )}
+
+      <div className="container mx-auto max-w-6xl relative z-10 flex-1 flex flex-col justify-center">
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.05]">
             Convierte visitas en ventas
@@ -60,7 +166,7 @@ const HeroSection = () => {
         </div>
 
         <div className="relative max-w-5xl mx-auto">
-          <div className="overflow-hidden rounded-2xl border bg-muted/30">
+          <div className="overflow-hidden rounded-2xl border bg-muted/30 backdrop-blur-sm">
             <div className="flex items-center justify-between p-10 md:p-14 min-h-[200px] md:min-h-[260px]">
               <button
                 onClick={prevSlide}
