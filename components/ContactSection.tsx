@@ -3,15 +3,51 @@
 import { useState, useEffect, useRef } from 'react';
 import Typed from "typed.js";
 
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+}
+
 const ContactSection = () => {
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const typedRef = useRef<HTMLSpanElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setFormStatus('success');
+    setErrorMessage('');
+
+    const formData = new FormData(e.currentTarget);
+    const data: FormData = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Error al enviar el mensaje');
+      }
+
+      setFormStatus('success');
+    } catch (error) {
+      setFormStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Ocurrió un error');
+    }
   };
 
   useEffect(() => {
@@ -73,6 +109,11 @@ const ContactSection = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {formStatus === 'error' && (
+                  <div className="p-4 rounded-md bg-red-50 border border-red-200">
+                    <p className="text-sm text-red-600">{errorMessage}</p>
+                  </div>
+                )}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-3">
                     <label htmlFor="name" className="text-base font-medium">Nombre</label>
@@ -81,7 +122,7 @@ const ContactSection = () => {
                       type="text"
                       required
                       className="flex h-12 w-full rounded-md border border-input bg-background px-4 py-3 text-base ring-offset-background file:border-0 file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="Juan Pérez"
+                      placeholder="Tu nombre"
                     />
                   </div>
                   <div className="space-y-3">
@@ -91,7 +132,7 @@ const ContactSection = () => {
                       type="email"
                       required
                       className="flex h-12 w-full rounded-md border border-input bg-background px-4 py-3 text-base ring-offset-background file:border-0 file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="juan@empresa.com"
+                      placeholder="nombre@email.com"
                     />
                   </div>
                 </div>

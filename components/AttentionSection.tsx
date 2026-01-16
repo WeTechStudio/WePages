@@ -48,7 +48,7 @@ const AttentionSection = () => {
   }, []);
 
   return (
-    <section className="py-28 md:py-40 bg-zinc-950 text-white">
+    <section id="atencion" className="py-28 md:py-40 bg-zinc-950 text-white">
       <div className="container mx-auto px-4 md:px-8 max-w-5xl">
         <motion.div
           className="text-center mb-20"

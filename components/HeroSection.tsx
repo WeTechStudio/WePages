@@ -154,10 +154,10 @@ const HeroSection = () => {
               Solicitar demo — 15 min
             </a>
             <a
-              href="#precios"
+              href="#servicios"
               className="inline-flex items-center justify-center rounded-md border border-border bg-background hover:bg-secondary/50 h-14 px-10 text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              Ver precios
+              Features
             </a>
           </div>
 

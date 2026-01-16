@@ -8,7 +8,7 @@ const Footer = () => {
           <div>
             <div className="font-bold text-xl mb-5">WePages</div>
             <p className="text-base text-muted-foreground">
-              Landing pages que venden, rápidas y medibles.
+              Contacto: wepagesstudio@gmail.com
             </p>
           </div>
           <div>

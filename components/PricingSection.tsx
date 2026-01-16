@@ -115,7 +115,7 @@ const PricingSection = () => {
         </div>
 
         <p className="text-center text-sm text-muted-foreground mt-8">
-          WePages no es una landing page. Es una infraestructura de conversión.
+          Más que una landing page. Un sistema de crecimiento medible.
         </p>
       </div>
     </section>

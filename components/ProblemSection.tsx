@@ -26,7 +26,7 @@ const ProblemSection = () => {
   }, []);
 
   return (
-    <section className="py-24 md:py-36">
+    <section id="problema" className="py-24 md:py-36">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
