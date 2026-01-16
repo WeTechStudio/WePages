@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { MessageSquare, FileText, Code, Rocket } from 'lucide-react';
+import { MessageSquare, FileText, Code, Rocket, BarChart } from 'lucide-react';
 import Typed from "typed.js";
 
 const steps = [
@@ -14,7 +14,7 @@ const steps = [
   {
     icon: FileText,
     step: '2',
-    title: 'Brief y assets',
+    title: 'Brief & Assets',
     description: 'Recopilamos tu marca',
   },
   {
@@ -29,6 +29,12 @@ const steps = [
     title: 'Launch',
     description: 'Deploy y soporte',
   },
+  {
+    icon: BarChart,
+    step: '5',
+    title: 'Measure & Improve',
+    description: 'Análisis y optimización',
+  },
 ];
 
 const ProcessSection = () => {
@@ -38,7 +44,7 @@ const ProcessSection = () => {
     if (!typedRef.current) return;
 
     const typed = new Typed(typedRef.current, {
-      strings: ["Cómo funciona", "Tu landing en 4 pasos", "Proceso simple y ágil"],
+      strings: ["Cómo funciona", "Tu landing en 5 pasos", "Proceso simple y ágil"],
       typeSpeed: 50,
       backSpeed: 30,
       backDelay: 2000,
@@ -59,9 +65,9 @@ const ProcessSection = () => {
         </h2>
 
         <div className="relative">
-          <div className="hidden md:block absolute top-10 left-0 right-0 h-px bg-border" style={{ left: '12.5%', right: '12.5%' }} />
+          <div className="hidden md:block absolute top-10 left-0 right-0 h-px bg-border" style={{ left: '10%', right: '10%' }} />
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-8">
             {steps.map((step, index) => (
               <div key={index} className="text-center relative">
                 <div className="w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center mx-auto mb-6 relative z-10">

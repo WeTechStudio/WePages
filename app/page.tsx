@@ -3,7 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import ProblemSection from '@/components/ProblemSection';
 import AttentionSection from '@/components/AttentionSection';
 import FeaturesSection from '@/components/FeaturesSection';
-import CasesSection from '@/components/CasesSection';
+import AfterLaunchSection from '@/components/AfterLaunchSection';
 import PricingSection from '@/components/PricingSection';
 import ProcessSection from '@/components/ProcessSection';
 import ContactSection from '@/components/ContactSection';
@@ -18,7 +18,7 @@ export default function Home() {
         <ProblemSection />
         <AttentionSection />
         <FeaturesSection />
-        <CasesSection />
+        <AfterLaunchSection />
         <PricingSection />
         <ProcessSection />
         <ContactSection />

@@ -21,7 +21,7 @@ const geom = Geom({
 });
 
 export const metadata: Metadata = {
-  title: "WePages - Landing Pages que Venden",
+  title: "WePages",
   description: "Landing pages rápidas, limpias y medibles para tu negocio.",
 };
 

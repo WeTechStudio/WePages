@@ -2,22 +2,32 @@
 
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
+import { BarChart3, TrendingUp, Zap } from 'lucide-react';
 
 const cases = [
   {
     title: 'SaaS B2B',
-    metric: '+45% leads',
+    metric: '+45%',
+    label: 'leads',
     description: 'Landing page para startup de software empresarial.',
+    icon: BarChart3,
+    gradient: 'from-blue-500 to-cyan-500',
   },
   {
     title: 'E-commerce',
-    metric: '+32% ventas',
+    metric: '+32%',
+    label: 'ventas',
     description: 'Página de producto optimizada para conversión.',
+    icon: TrendingUp,
+    gradient: 'from-emerald-500 to-teal-500',
   },
   {
     title: 'Consultoría',
-    metric: '+60% citas',
+    metric: '+60%',
+    label: 'citas',
     description: 'Sitio web para firma de consultoría estratégica.',
+    icon: Zap,
+    gradient: 'from-amber-500 to-orange-500',
   },
 ];
 
@@ -53,15 +63,18 @@ const CasesSection = () => {
 
         <div className="grid md:grid-cols-3 gap-10">
           {cases.map((caseItem, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-2xl border bg-background shadow-sm">
-              <div className="aspect-video bg-muted relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                  <span className="text-base">Imagen del proyecto</span>
+            <div key={index} className="group relative overflow-hidden rounded-2xl border bg-background shadow-sm hover:shadow-md transition-shadow">
+              <div className={`h-48 bg-gradient-to-br ${caseItem.gradient} p-6 flex flex-col justify-between`}>
+                <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <caseItem.icon className="w-5 h-5 text-white" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <div className="text-white/80 text-sm font-medium mb-1">{caseItem.title}</div>
+                  <div className="text-white text-4xl font-bold">{caseItem.metric}</div>
+                  <div className="text-white/80 text-sm">{caseItem.label}</div>
                 </div>
               </div>
               <div className="p-8">
-                <div className="text-base text-primary font-medium mb-3">{caseItem.title}</div>
-                <h3 className="text-3xl font-bold mb-3">{caseItem.metric}</h3>
                 <p className="text-muted-foreground text-base">{caseItem.description}</p>
               </div>
             </div>
