@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { Search, Code, TrendingUp } from 'lucide-react';
 import Typed from "typed.js";
+import { motion } from "framer-motion";
 
 const phases = [
   {
@@ -73,21 +74,31 @@ const PricingSection = () => {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {phases.map((phase, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`relative rounded-2xl border p-8 shadow-sm ${
+              className={`relative rounded-2xl border p-8 shadow-sm transition-all duration-300 ${
                 index === 1 ? 'border-primary bg-primary/5' : 'bg-background'
               }`}
+              whileHover={{ 
+                scale: 1.02,
+                y: -4,
+                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${
-                index === 1 ? 'bg-primary' : 'bg-primary/10'
-              }`}>
+              <motion.div 
+                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${
+                  index === 1 ? 'bg-primary' : 'bg-primary/10'
+                }`}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
                 <phase.icon className={`w-6 h-6 ${index === 1 ? 'text-primary-foreground' : 'text-primary'}`} strokeWidth={1.5} />
-              </div>
+              </motion.div>
               
               <h3 className="text-xl font-semibold mb-3">{phase.title}</h3>
               <p className="text-base text-muted-foreground mb-6 leading-relaxed">{phase.description}</p>
-              
+
               <ul className="space-y-3 mb-8">
                 {phase.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="flex items-start gap-3 text-sm">
@@ -98,7 +109,7 @@ const PricingSection = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
 

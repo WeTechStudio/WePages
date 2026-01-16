@@ -52,11 +52,16 @@ const AfterLaunchSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex gap-4"
+                  whileHover={{ scale: 1.02, x: 4 }}
+                  className="flex gap-4 cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <motion.div 
+                    className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"
+                    whileHover={{ scale: 1.1, backgroundColor: "var(--primary)" }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                  >
                     <benefit.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="font-semibold mb-1">{benefit.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -69,7 +74,14 @@ const AfterLaunchSection = () => {
           </div>
 
           <div className="relative">
-            <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
+            <motion.div 
+              className="bg-card rounded-2xl p-8 border border-border shadow-sm"
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
               <div className="space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-border">
                   <span className="text-sm text-muted-foreground">Visitantes únicos</span>
@@ -93,12 +105,20 @@ const AfterLaunchSection = () => {
                   * Datos promedio de clientes después de 3 meses
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground rounded-xl p-4 shadow-lg">
+            <motion.div 
+              className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground rounded-xl p-4 shadow-lg cursor-pointer"
+              whileHover={{ 
+                scale: 1.1,
+                y: -4,
+                boxShadow: "0 12px 32px rgba(0, 0, 0, 0.2)"
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            >
               <p className="text-sm font-medium">ROI promedio</p>
               <p className="text-3xl font-bold">340%</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

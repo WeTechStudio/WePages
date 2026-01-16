@@ -1,8 +1,11 @@
 "use client";
 
+"use client";
+
 import { useEffect, useRef } from "react";
 import { MessageSquare, FileText, Code, Rocket, BarChart } from 'lucide-react';
 import Typed from "typed.js";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -69,14 +72,27 @@ const ProcessSection = () => {
 
           <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-8">
             {steps.map((step, index) => (
-              <div key={index} className="text-center relative">
-                <div className="w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center mx-auto mb-6 relative z-10">
+              <motion.div
+                key={index}
+                className="text-center relative"
+                whileHover={{ scale: 1.05, y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <motion.div 
+                  className="w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center mx-auto mb-6 relative z-10"
+                  whileHover={{ 
+                    scale: 1.15,
+                    borderColor: "var(--primary)",
+                    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)"
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                >
                   <step.icon className="w-7 h-7 text-muted-foreground" strokeWidth={1.5} />
-                </div>
+                </motion.div>
                 <div className="text-base text-muted-foreground mb-2">Paso {step.step}</div>
                 <h3 className="font-bold text-xl mb-2">{step.title}</h3>
                 <p className="text-base text-muted-foreground">{step.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -124,3 +124,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .cursor-none {
+    cursor: none;
+  }
+}

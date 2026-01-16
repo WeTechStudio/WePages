@@ -12,8 +12,6 @@ interface Project {
   image: string;
 }
 
-const BLUR_DATA_URL = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23e2e8f0' width='400' height='300'/%3E%3C/svg%3E";
-
 function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.article
@@ -27,8 +25,6 @@ function ProjectCard({ project }: { project: Project }) {
         alt={project.title}
         width={400}
         height={300}
-        blurDataURL={BLUR_DATA_URL}
-        priority={false}
         className="w-full h-48"
       />
       <div className="p-6">
