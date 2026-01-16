@@ -119,6 +119,7 @@ const ContactSection = () => {
                     <label htmlFor="name" className="text-base font-medium">Nombre</label>
                     <input
                       id="name"
+                      name="name"
                       type="text"
                       required
                       className="flex h-12 w-full rounded-md border border-input bg-background px-4 py-3 text-base ring-offset-background file:border-0 file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
@@ -129,6 +130,7 @@ const ContactSection = () => {
                     <label htmlFor="email" className="text-base font-medium">Email</label>
                     <input
                       id="email"
+                      name="email"
                       type="email"
                       required
                       className="flex h-12 w-full rounded-md border border-input bg-background px-4 py-3 text-base ring-offset-background file:border-0 file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
@@ -138,17 +140,19 @@ const ContactSection = () => {
                 </div>
                 <div className="space-y-3">
                   <label htmlFor="company" className="text-base font-medium">Empresa (opcional)</label>
-                  <input
-                    id="company"
-                    type="text"
-                    className="flex h-12 w-full rounded-md border border-input bg-background px-4 py-3 text-base ring-offset-background file:border-0 file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Tu empresa"
-                  />
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      className="flex h-12 w-full rounded-md border border-input bg-background px-4 py-3 text-base ring-offset-background file:border-0 file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      placeholder="Tu empresa"
+                    />
                 </div>
                 <div className="space-y-3">
                   <label htmlFor="message" className="text-base font-medium">Mensaje</label>
                   <textarea
                     id="message"
+                    name="message"
                     required
                     rows={5}
                     className="flex w-full rounded-md border border-input bg-background px-4 py-3 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"

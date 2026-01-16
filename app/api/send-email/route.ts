@@ -1,10 +1,19 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+    
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: 'Configuración incompleta: falta API key de Resend' },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
     const body = await request.json();
     const { name, email, company, message } = body;
 
@@ -18,6 +27,7 @@ export async function POST(request: Request) {
     const { data, error } = await resend.emails.send({
       from: 'WePages <onboarding@resend.dev>',
       to: ['wepagesstudio@gmail.com'],
+      replyTo: email,
       subject: `Nuevo contacto desde WePages - ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
