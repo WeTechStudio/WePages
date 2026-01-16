@@ -4,6 +4,7 @@ import ProblemSection from '@/components/ProblemSection';
 import AttentionSection from '@/components/AttentionSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import AfterLaunchSection from '@/components/AfterLaunchSection';
+import SuccessStoriesCarousel from '@/components/SuccessStoriesCarousel';
 import PricingSection from '@/components/PricingSection';
 import ProcessSection from '@/components/ProcessSection';
 import ContactSection from '@/components/ContactSection';
@@ -19,6 +20,7 @@ export default function Home() {
         <AttentionSection />
         <FeaturesSection />
         <AfterLaunchSection />
+        <SuccessStoriesCarousel />
         <PricingSection />
         <ProcessSection />
         <ContactSection />
