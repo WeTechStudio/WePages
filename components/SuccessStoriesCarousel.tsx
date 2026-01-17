@@ -21,7 +21,7 @@ const projects: Project[] = [
     title: "AguaConnect",
     clientType: "Landing Page",
     description: "Landing page corporativa con secciones de servicios, testimonios y formulario de contacto para empresa de distribución de agua",
-    image: "/images/projects/AguaConnect.png",
+    image: "/images/projects/AguaConnect/AguaConnect.png",
     gallery: [
       "/images/projects/AguaConnect/AguaConnect2.png",
       "/images/projects/AguaConnect/AguaConnect3.png",
@@ -33,7 +33,7 @@ const projects: Project[] = [
     title: "LibreriaJSR",
     clientType: "E-commerce",
     description: "E-commerce completo con catálogo de productos, carrito de compras, pasarela de pagos y panel de administración",
-    image: "/images/projects/LibreriaJSR.png",
+    image: "/images/projects/LibreriaJSR/LibreriaJSR.png",
     gallery: [
       "/images/projects/LibreriaJSR/LibreriaJSR2.png",
       "/images/projects/LibreriaJSR/LibreriaJSR3.png",
@@ -45,7 +45,7 @@ const projects: Project[] = [
     title: "WeRide",
     clientType: "Aplicación Web",
     description: "Frontend completo de aplicación de renta de bicicletas con mapa interactivo, reservas y panel de usuario",
-    image: "/images/projects/WeRide.png",
+    image: "/images/projects/WeRide/WeRide.png",
     gallery: [
       "/images/projects/WeRide/WeRide2.png",
       "/images/projects/WeRide/WeRide3.png",
@@ -85,6 +85,7 @@ function ProjectCard({ project, index, onMouseEnter, onMouseLeave }: ProjectCard
           src={project.image}
           alt={`Landing page de ${project.title}`}
           fill
+          unoptimized
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 320px, 384px"
         />
@@ -274,8 +275,8 @@ export default function SuccessStoriesCarousel() {
             <p className="text-sm text-gray-500">
               <span className="inline-flex items-center gap-2">
                 <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                <span className="text-gray-400">entregados en el tiempo acordado</span>
-                <span className="font-semibold text-white">resultados más que satisfactorios</span>
+                <span className="text-gray-400">entregas en el tiempo acordado, </span>
+                <span className="font-semibold text-white">resultados más que satisfactorios.</span>
               </span>
             </p>
           </div>
@@ -308,10 +309,11 @@ const HoverGalleryModal = ({ project, isVisible, onModalEnter, onModalLeave }: H
         {isVisible && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
+            animate={{ opacity: 0.85 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.1 }}
-            className="fixed inset-0 bg-black/60 pointer-events-none z-40"
+            className="fixed inset-0 bg-black/85 z-40"
+            onClick={onModalLeave}
           />
         )}
       </AnimatePresence>
@@ -332,7 +334,7 @@ const HoverGalleryModal = ({ project, isVisible, onModalEnter, onModalLeave }: H
               aria-modal="false"
               aria-label={`Galería de ${project.title}`}
             >
-              <div className="p-6 border-b border-white/10">
+              <div className="p-6 border-b border-white/10 text-center">
                 <h3 className="text-2xl font-bold text-white">{project.title}</h3>
                 <p className="text-sm text-gray-400 mt-1">
                   {clientTypeLabels[project.clientType]}
@@ -351,6 +353,7 @@ const HoverGalleryModal = ({ project, isVisible, onModalEnter, onModalLeave }: H
                           src={imagePath}
                           alt={`${project.title} - Imagen ${i + 2}`}
                           fill
+                          unoptimized
                           className="object-contain"
                           priority={i === 0}
                         />
