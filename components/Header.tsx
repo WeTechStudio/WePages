@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const mainLinks = [
   { href: '#servicios', label: 'Servicios' },
-  { href: '#precios', label: 'Precios' },
+  { href: '#agenda', label: 'Agenda' },
   { href: '#contacto', label: 'Contacto' },
 ];
 

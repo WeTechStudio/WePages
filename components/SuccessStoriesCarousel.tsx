@@ -9,7 +9,7 @@ import Typed from "typed.js";
 interface Project {
   id: number;
   title: string;
-  clientType: "Empresa" | "E-commerce" | "SaaS" | "Aplicación";
+  clientType: "Empresa" | "E-commerce" | "SaaS" | "Aplicación Web";
   description: string;
   image: string;
 }
@@ -32,7 +32,7 @@ const projects: Project[] = [
   {
     id: 3,
     title: "WeRide",
-    clientType: "Aplicación",
+    clientType: "Aplicación Web",
     description: "Frontend completo de aplicación de renta de bicicletas con mapa interactivo, reservas y panel de usuario",
     image: "/images/projects/WeRide.png",
   },
@@ -42,7 +42,7 @@ const clientTypeLabels: Record<Project["clientType"], string> = {
   "Empresa": "Empresa",
   "E-commerce": "E-commerce",
   "SaaS": "SaaS",
-  "Aplicación": "Aplicación",
+  "Aplicación Web": "Aplicación Web",
 };
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -82,10 +82,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
           <span className="text-xs text-gray-500 uppercase tracking-wider">
-            Landing page
-          </span>
-          <span className="text-xs font-medium text-white">
-            Ver proyecto →
+            {project.clientType}
           </span>
         </div>
       </div>
@@ -177,30 +174,13 @@ export default function SuccessStoriesCarousel() {
             <p className="text-sm text-gray-500">
               <span className="inline-flex items-center gap-2">
                 <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                <span className="text-gray-400">Landing pages creadas y entregadas a</span>
+                <span className="text-gray-400">Productos creados y entregados a</span>
                 <span className="font-semibold text-white">{projects.length}+ clientes</span>
               </span>
             </p>
           </div>
-
-          <div className="mt-8 flex justify-center gap-2">
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="w-12 h-0.5 bg-white/10 rounded-full overflow-hidden"
-                role="presentation"
-              >
-                <div
-                  className="h-full bg-white rounded-full"
-                  style={{
-                    width: i === 1 ? "60%" : "30%",
-                    opacity: i === 1 ? 1 : 0.5,
-                  }}
-                />
-              </div>
-            ))}
-          </div>
         </div>
+
       </div>
     </section>
   );

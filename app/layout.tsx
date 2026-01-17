@@ -23,6 +23,9 @@ const geom = Geom({
 export const metadata: Metadata = {
   title: "WePages",
   description: "Landing pages rápidas, limpias y medibles para tu negocio.",
+  icons: {
+    icon: '/wetech.svg',
+  },
 };
 
 export default function RootLayout({

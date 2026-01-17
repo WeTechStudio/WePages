@@ -4,9 +4,9 @@ import { ExternalLink, ArrowRight } from 'lucide-react';
 
 const footerProductLinks = [
   { href: '#servicios', label: 'Características' },
-  { href: '#precios', label: 'Precios' },
+  { href: '#agenda', label: 'Agenda' },
   { href: '#proceso', label: 'Proceso' },
-  { href: '#casos', label: 'Casos de éxito' },
+  { href: '#casos-exito', label: 'Casos de éxito' },
 ];
 
 const footerResourceLinks = [
