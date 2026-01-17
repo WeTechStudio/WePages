@@ -148,10 +148,10 @@ const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-10">
             <a
-              href="#contacto"
-              className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-10 text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              href="#agenda"
+              className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-10 text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"  
             >
-              Solicitar demo — 15 min
+              Solicitar una demo
             </a>
             <a
               href="#servicios"

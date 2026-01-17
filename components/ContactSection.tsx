@@ -77,7 +77,7 @@ const ContactSection = () => {
               <span ref={typedRef} style={{ color: 'var(--foreground)' }} />
             </h2>
             <p className="text-xl text-muted-foreground mb-10">
-              Agenda una demo de 15 minutos y te contamos cómo podemos ayudarte a convertir más visitantes en clientes.
+              Agenda una reunión y te contamos cómo podemos ayudarte a convertir más visitantes en clientes.
             </p>
             <div className="space-y-6">
               <div>
