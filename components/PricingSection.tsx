@@ -116,7 +116,7 @@ const PricingSection = () => {
 
         <div className="text-center mt-12">
           <p className="text-lg text-muted-foreground mb-6">
-            El lanzamiento es solo el inicio
+            El lanzamiento es solo el inicio.
           </p>
           <a
             href="#contacto"

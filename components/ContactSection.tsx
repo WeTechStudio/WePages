@@ -86,7 +86,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-base font-medium mb-2">Disponibilidad</p>
-                <p className="text-muted-foreground text-lg">Lun - Vie, 9am - 6pm (GMT-3)</p>
+                <p className="text-muted-foreground text-lg">Lun - Dom, 10am - 7pm (GMT-5)</p>
               </div>
             </div>
           </div>

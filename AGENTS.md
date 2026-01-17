@@ -312,17 +312,25 @@ components/
 ├── ui/                    # Componentes base (shadcn style)
 │   ├── SkeletonCard.tsx
 │   ├── SkeletonText.tsx
-│   └── SkeletonImage.tsx
+│   ├── SkeletonImage.tsx
+│   ├── ParticlesBackground.tsx
+│   ├── TypedHeading.tsx
+│   ├── HighlightWord.tsx
+│   ├── MagnifyingImage.tsx
+│   └── OptimizedImage.tsx
 ├── Header.tsx             # Navegación principal
 ├── Footer.tsx             # Footer
-├── HeroSection.tsx        # Sección hero
+├── HeroSection.tsx        # Sección hero con partículas
 ├── ProblemSection.tsx     # Sección de problemas
 ├── AttentionSection.tsx   # Estadísticas de atención
 ├── FeaturesSection.tsx    # Características
-├── CasesSection.tsx       # Casos de éxito
+├── AfterLaunchSection.tsx # Servicios post-lanzamiento
+├── SuccessStoriesCarousel.tsx # Carrusel de casos de éxito
+├── ProjectsSection.tsx    # Grid de proyectos
 ├── PricingSection.tsx     # Planes y precios
 ├── ProcessSection.tsx     # Proceso de trabajo
 ├── ContactSection.tsx     # Formulario de contacto
+├── InfiniteHorizontalScroll.tsx # Scroll horizontal infinito
 └── SmoothScrollProvider.tsx # Scroll smoothing
 ```
 
@@ -351,13 +359,27 @@ components/
 
 **Elementos**:
 - Headline principal (H1)
-- Párrafo descriptivo
+- Párrafo descriptivo con HighlightWord
 - Dos CTAs: primario y secundario
-- Ilustración placeholder (visible solo en desktop)
+- Background de partículas interactivas (@tsparticles/react)
+- Carousel de casos de éxito con navegación (botones y dots)
+- Estadísticas destacadas (+45% leads, +32% ventas, +60% citas)
 
-**Layout**: Grid 2 columnas en desktop, stack en mobile
+**Layout**: Stack centrado, diseño optimizado para mobile first
 
-**Spacing**: `pt-24 md:pt-32 pb-16 md:pb-24`
+**Partículas**:
+- Interactive: Modo "grab" al hover
+- Links entre partículas cercanas
+- Movimiento aleatorio "outside"
+- 80 partículas con opacidad animada
+
+**Carousel**:
+- 4 items: SaaS B2B, E-commerce, Consultoría, Producto digital
+- Navegación con botones prev/next
+- Indicadores de dots
+- Auto-manual toggle
+
+**Spacing**: `pt-24 md:pt-36 pb-16 px-4 md:px-8`
 
 ### Problem Section
 
@@ -404,19 +426,41 @@ components/
 
 **Cards**: Con borde, background `--card`, shadow-sm
 
-### Cases Section
+### AfterLaunch Section
 
-**Background**: `bg-muted/30` (sección sutilmente diferenciada)
+**Propósito**: Mostrar servicios y beneficios post-lanzamiento
 
-**Grid**: 3 columnas
+**Elementos**:
+- Título H2 con Typed.js (animación de palabras)
+- 4 beneficios con iconos (Analytics, Informes, Optimización, Mantenimiento)
+- Card de estadísticas con métricas reales (visitantes, conversión, tiempo, leads)
+- Badge flotante de ROI
 
-**Elementos por caso**:
-- Imagen/placeholder (aspect-video)
-- Tag de categoría (`text-primary`)
-- Métrica destacada (`text-2xl font-bold`)
-- Descripción
+**Background**: `bg-muted/30`
 
-**Hover**: Efecto sutil en las cards
+**Animaciones**:
+- Framer Motion fade in + slide up
+- Efecto hover con scale y shadow
+- Typed.js para título animado
+
+### SuccessStoriesCarousel
+
+**Propósito**: Carrusel infinito de casos de éxito
+
+**Elementos**:
+- Título H2 con Typed.js
+- Partículas de fondo (no interactivas)
+- Scroll horizontal infinito con CSS animation
+- 3 proyectos duplicados para efecto infinito:
+  - AguaConnect (Empresa)
+  - LibreriaJSR (E-commerce)
+  - WeRide (Aplicación)
+- Cards con imagen, tag, título y descripción
+- Indicadores de progreso
+
+**Background**: `bg-[#030305]` (negro profundo)
+
+**Animación**: `scroll-right` (60s linear infinite)
 
 ### Pricing Section
 
@@ -482,7 +526,7 @@ components/
 
 ```tsx
 // SkeletonCard
-<SkeletonCard 
+<SkeletonCard
   showImage={true}
   imageAspect="aspect-[4/3]"
   lines={3}
@@ -494,6 +538,55 @@ components/
 
 // SkeletonText
 <SkeletonText lines={3} lineHeight="h-4" />
+```
+
+#### Image Components
+
+```tsx
+// OptimizedImage (con blur placeholder)
+<OptimizedImage
+  src="/path/to/image.jpg"
+  alt="Descripción"
+  blurDataURL="/path/to/blur-image.jpg"
+  width={400}
+  height={300}
+  className="w-full h-48"
+/>
+
+// MagnifyingImage (efecto lupa)
+<MagnifyingImage
+  src="/path/to/image.jpg"
+  alt="Descripción"
+  zoomLevel={2}
+  lensSize={150}
+  className="w-full"
+/>
+```
+
+#### Animation Components
+
+```tsx
+// TypedHeading (typing animation)
+<TypedHeading
+  words={["Palabra 1", "Palabra 2", "Palabra 3"]}
+  className="text-4xl font-bold"
+/>
+
+// HighlightWord (resaltar palabras)
+<HighlightWord variant="hw1">Texto destacado</HighlightWord>
+```
+
+#### Particles
+
+```tsx
+// ParticlesBackground (background de partículas no interactivas)
+<ParticlesBackground />
+
+// Configuración custom (HeroSection)
+<Particles
+  options={particlesOptions}
+  className="absolute inset-0"
+/>
 ```
 
 ### Formularios
@@ -559,6 +652,41 @@ Animaciones CSS predefinidas disponibles:
 @keyframes slide-in-from-top { from { transform: translateY(-100%); } }
 @keyframes slide-in-from-bottom { from { transform: translateY(100%); } }
 @keyframes scale-in { from { transform: scale(0.95); opacity: 0; } }
+@keyframes scroll-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 60s linear infinite;
+}
+```
+
+### tsParticles (Partículas)
+
+**Partículas Background (no interactivas)**:
+- Movimiento: dirección "right", loop
+- 85 partículas, tamaño 1-4px
+- Opacidad: 0.4-0.8
+- Velocidad: 0.5
+- Color: blanco
+
+**Partículas Hero (interactivas)**:
+- Modo: "grab" al hover
+- Links entre partículas (distancia 120px)
+- 80 partículas, tamaño 2-5px
+- Movimiento: "outside" aleatorio
+- Velocidad: 1.5
+- Colores: múltiples tonos de gris
+
+### Infinite Horizontal Scroll
+
+Scroll horizontal infinito usando Framer Motion:
+
+```tsx
+<InfiniteHorizontalScroll speed={1} className="">
+  {children}
+</InfiniteHorizontalScroll>
 ```
 
 ### Transiciones de Color
@@ -692,6 +820,10 @@ Usar `@layer base` para estilos globales:
 | clsx | 2.1.1 | Classnames utility |
 | tailwind-merge | 3.4.0 | Tailwind class merging |
 | tw-animate-css | 1.4.0 | Animaciones CSS |
+| @tsparticles/react | 3.0.0 | Partículas animadas |
+| @tsparticles/slim | 3.9.1 | Engine de partículas optimizado |
+| resend | 6.7.0 | Envío de emails |
+| typed.js | 2.1.0 | Animación de texto typing |
 
 ### Dev Dependencies
 
@@ -725,26 +857,39 @@ WePages/
 │   ├── layout.tsx          # Root layout + fonts
 │   ├── loading.tsx         # Loading state
 │   ├── page.tsx            # Homepage
+│   ├── api/               # API Routes
+│   │   └── send-email/    # Route handler para emails
+│   │       └── route.ts
 │   └── favicon.ico         # Favicon
 ├── components/
 │   ├── ui/                 # Componentes base (shadcn)
 │   │   ├── SkeletonCard.tsx
 │   │   ├── SkeletonText.tsx
-│   │   └── SkeletonImage.tsx
+│   │   ├── SkeletonImage.tsx
+│   │   ├── ParticlesBackground.tsx
+│   │   ├── TypedHeading.tsx
+│   │   ├── HighlightWord.tsx
+│   │   ├── MagnifyingImage.tsx
+│   │   └── OptimizedImage.tsx
 │   ├── AttentionSection.tsx
-│   ├── CasesSection.tsx
+│   ├── AfterLaunchSection.tsx
 │   ├── ContactSection.tsx
 │   ├── FeaturesSection.tsx
 │   ├── Footer.tsx
 │   ├── Header.tsx
 │   ├── HeroSection.tsx
+│   ├── InfiniteHorizontalScroll.tsx
 │   ├── PricingSection.tsx
 │   ├── ProcessSection.tsx
 │   ├── ProblemSection.tsx
+│   ├── ProjectsSection.tsx
+│   ├── SuccessStoriesCarousel.tsx
 │   └── SmoothScrollProvider.tsx
 ├── lib/
 │   └── utils.ts            # Utils (cn function)
 ├── public/
+│   ├── images/            # Imágenes del proyecto
+│   │   └── projects/      # Screenshots de proyectos
 │   ├── file.svg
 │   ├── globe.svg
 │   ├── next.svg
@@ -762,6 +907,48 @@ WePages/
 ├── postcss.config.mjs      # PostCSS config
 ├── README.md
 └── tsconfig.json           # TypeScript config
+```
+
+---
+
+## API Routes
+
+### Email Sending (Resend)
+
+**Endpoint**: `POST /api/send-email`
+
+**Propósito**: Envío de emails desde el formulario de contacto usando Resend.
+
+**Request Body**:
+```json
+{
+  "name": "string (required)",
+  "email": "string (required)",
+  "company": "string (optional)",
+  "message": "string (required)"
+}
+```
+
+**Responses**:
+- `200`: Email enviado exitosamente
+- `400`: Campos requeridos faltantes
+- `500`: Error de configuración o envío
+
+**Environment Variables**:
+- `RESEND_API_KEY`: API key de Resend (requerido)
+
+**Implementación**:
+```ts
+// app/api/send-email/route.ts
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+await resend.emails.send({
+  from: 'WePages <onboarding@resend.dev>',
+  to: ['wepagesstudio@gmail.com'],
+  replyTo: email,
+  subject: `Nuevo contacto desde WePages - ${name}`,
+  html: `...`
+});
 ```
 
 ---
@@ -863,8 +1050,10 @@ Mobile-first: empezar con estilos base, añadir media queries con `md:`, `lg:`, 
 - **Next.js Font**: Fonts auto-optimized, no layout shift
 - **Lenis**: Smooth scroll sin afectar performance
 - **Code splitting**: Automatico por Next.js
-- **Image optimization**: Componente `next/image` (por implementar)
+- **Image optimization**: Componente `next/image` con OptimizedImage (blur placeholder)
 - **Tree shaking**: Solo se importa lo que se usa
+- **Skeleton loading**: Estados de carga con componentes de skeleton
+- **Particles optimization**: Versión slim de tsParticles para mejor rendimiento
 
 ### Métricas Objetivo
 
@@ -974,7 +1163,10 @@ npm run lint
 
 ### Variables de Entorno
 
-No hay variables de entorno requeridas actualmente.
+**Requeridas**:
+- `RESEND_API_KEY`: API key de Resend para envío de emails desde formulario de contacto
+
+**Opcionales**: No hay variables opcionales actualmente.
 
 ---
 
@@ -1029,11 +1221,11 @@ No hay variables de entorno requeridas actualmente.
 
 ### Áreas de Mejora
 
-- Más imágenes y contenido visual
-- Formularios con validación real
+- Más imágenes de proyectos reales
 - Tests unitarios y E2E
 - Analytics integrados (GA4)
-- SEO optimization
+- SEO optimization avanzada
+- Sistema de theming avanzado con toggle
 
 ### Consideraciones Futuras
 
@@ -1045,4 +1237,4 @@ No hay variables de entorno requeridas actualmente.
 
 ---
 
-*Este documento será actualizado conforme el proyecto evolucione. Última actualización: Enero 2026.*
+*Este documento será actualizado conforme el proyecto evolucione. Última actualización: 17 de Enero 2026.*

@@ -12,7 +12,7 @@ const ProblemSection = () => {
     if (!typedRef.current) return;
 
     const typed = new Typed(typedRef.current, {
-      strings: ["El problema con las landing pages actuales", "Por qué tu landing no convierte", "Lo que está mal con tu página"],
+      strings: ["¿Solo basta con un diseño bonito?", "Por qué tu landing no convierte", "Qué está mal con tu página"],
       typeSpeed: 50,
       backSpeed: 30,
       backDelay: 2000,
