@@ -62,6 +62,7 @@ const ContactSection = () => {
       loop: true,
       showCursor: true,
       cursorChar: "|",
+      contentType: 'html',
     });
 
     return () => typed.destroy();
@@ -73,7 +74,7 @@ const ContactSection = () => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              <span ref={typedRef} />
+              <span ref={typedRef} style={{ color: 'var(--foreground)' }} />
             </h2>
             <p className="text-xl text-muted-foreground mb-10">
               Agenda una demo de 15 minutos y te contamos cómo podemos ayudarte a convertir más visitantes en clientes.

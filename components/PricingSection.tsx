@@ -56,6 +56,7 @@ const PricingSection = () => {
       loop: true,
       showCursor: true,
       cursorChar: "|",
+      contentType: 'html',
     });
 
     return () => typed.destroy();
@@ -65,7 +66,7 @@ const PricingSection = () => {
     <section id="precios" className="py-24 md:py-36">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">
-          <span ref={typedRef} />
+          <span ref={typedRef} style={{ color: 'var(--foreground)' }} />
         </h2>
         
         <p className="text-xl text-muted-foreground text-center mb-8 max-w-2xl mx-auto">

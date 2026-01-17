@@ -20,6 +20,7 @@ const ProblemSection = () => {
       loop: true,
       showCursor: true,
       cursorChar: "|",
+      contentType: 'html',
     });
 
     return () => typed.destroy();
@@ -31,7 +32,7 @@ const ProblemSection = () => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl font-bold mb-8">
-              <span ref={typedRef} />
+              <span ref={typedRef} style={{ color: 'var(--foreground)' }} />
             </h2>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
               La mayoría de las páginas web corporativas no están diseñadas para <HighlightWord variant="hw1">convertir</HighlightWord>.

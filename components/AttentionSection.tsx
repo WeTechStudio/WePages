@@ -42,6 +42,7 @@ const AttentionSection = () => {
       loop: true,
       showCursor: true,
       cursorChar: "|",
+      contentType: 'html',
     });
 
     return () => typed.destroy();
@@ -60,8 +61,8 @@ const AttentionSection = () => {
           <span className="text-base font-medium text-zinc-400 uppercase tracking-wider mb-6 block">
             La realidad del attention economy
           </span>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            <span ref={typedRef} />
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
+            <span ref={typedRef} style={{ color: 'white' }} />
           </h2>
         </motion.div>
 

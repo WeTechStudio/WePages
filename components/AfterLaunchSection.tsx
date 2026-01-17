@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { TrendingUp, Zap, Target, RefreshCw } from "lucide-react";
+import Typed from "typed.js";
 
 const benefits = [
   {
@@ -27,13 +29,33 @@ const benefits = [
 ];
 
 const AfterLaunchSection = () => {
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!typedRef.current) return;
+
+    const typed = new Typed(typedRef.current, {
+      strings: ["Después del lanzamiento", "Post-lanzamiento", "Optimización continua"],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      startDelay: 500,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+      contentType: 'html',
+    });
+
+    return () => typed.destroy();
+  }, []);
+
   return (
     <section id="post-lanzamiento" className="py-24 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Después del lanzamiento
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              <span ref={typedRef} style={{ color: 'var(--foreground)' }} />
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
               Una landing page no es un proyecto que termina en el lanzamiento. 

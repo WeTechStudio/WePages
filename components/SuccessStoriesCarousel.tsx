@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ParticlesBackground from "./ui/ParticlesBackground";
+import Typed from "typed.js";
 
 interface Project {
   id: number;
@@ -93,6 +94,26 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export default function SuccessStoriesCarousel() {
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!typedRef.current) return;
+
+    const typed = new Typed(typedRef.current, {
+      strings: ["Nuestros Productos", "Landing Pages Ejecutadas", "Soluciones Entregadas"],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      startDelay: 500,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+      contentType: 'html',
+    });
+
+    return () => typed.destroy();
+  }, []);
+
   const duplicatedProjects = useMemo((): Array<Project & { _displayIndex: number }> => {
     const result: Array<Project & { _displayIndex: number }> = [];
     projects.forEach((p, i) => {
@@ -119,9 +140,9 @@ export default function SuccessStoriesCarousel() {
           <div className="text-center mb-14">
             <h2
               id="success-stories-heading"
-              className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white"
+              className="text-5xl md:text-6xl font-bold tracking-tight mb-4 text-white"
             >
-              Nuestros Productos
+              <span ref={typedRef} style={{ color: 'white' }} />
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
               Con una muestra de nuestro trabajo, productos listos para generar impacto desde el primer día
