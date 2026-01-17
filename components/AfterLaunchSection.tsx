@@ -52,19 +52,22 @@ const AfterLaunchSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, x: 4 }}
-                  className="flex gap-4 cursor-pointer"
+                  whileHover={{ x: 4 }}
+                  className="group flex gap-4 cursor-pointer p-3 -m-3 rounded-xl transition-colors duration-300 hover:bg-white/60 dark:hover:bg-white/5"
                 >
                   <motion.div 
-                    className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"
-                    whileHover={{ scale: 1.1, backgroundColor: "var(--primary)" }}
+                    className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 relative overflow-hidden"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                   >
-                    <benefit.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <benefit.icon className="w-6 h-6 text-foreground/70 group-hover:text-primary transition-colors duration-300" strokeWidth={1.5} />
                   </motion.div>
                   <div>
-                    <h3 className="font-semibold mb-1">{benefit.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <h3 className="font-semibold mb-1 transition-colors duration-300 group-hover:text-primary">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
                       {benefit.description}
                     </p>
                   </div>
